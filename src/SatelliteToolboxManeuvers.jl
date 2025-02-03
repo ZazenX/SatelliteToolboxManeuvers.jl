@@ -22,7 +22,13 @@ struct BielipticTransfer <: TwoDimensional
 end
 
 function maneuver end
-maneuver(type::Symbol, args...; kwargs...) = maneuver(Val{type}, args...; kwargs...)
+
+function maneuver(::Val{T}, orbᵢ::M, orbₖ::N) where {T, M<:Orbit, N<:Orbit}
+    throw(ArgumentError("Unsupported maneuver type: $T"))
+end
+
+
+maneuver(type::Symbol, args...; kwargs...) = maneuver(Val(type), args...; kwargs...)
 
 include("./maneuvers.jl")
 include("./constants.jl")
