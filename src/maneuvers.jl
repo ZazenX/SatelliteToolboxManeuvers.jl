@@ -32,7 +32,8 @@ third burn to circularize the final orbit.
 function SatelliteToolboxManeuvers.maneuver(
     ::Val{:bielliptic},
      orbᵢ::M,
-    orbₖ::N, rₜ
+    orbₖ::N,
+    rₜ
 ) where {M<:Orbit, N <: Orbit}
     rᵢ = orbᵢ.a
     rₖ = orbₖ.a
